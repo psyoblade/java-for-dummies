@@ -8,6 +8,15 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+/**
+ * 
+ * https://github.com/google/gson/blob/master/UserGuide.md
+ * https://www.mkyong.com/java/how-do-convert-java-object-to-from-json-format-gson-api/
+ * http://www.javacreed.com/gson-annotations-example/
+ * 
+ * @author psyoblade
+ *
+ */
 public class GsonForDummies {
 
 	public static void main(String[] args) {
