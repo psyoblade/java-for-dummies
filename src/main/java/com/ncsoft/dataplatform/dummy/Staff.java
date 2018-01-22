@@ -3,10 +3,16 @@ package com.ncsoft.dataplatform.dummy;
 import java.math.BigDecimal;
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Staff {
 
+	@SerializedName("--name")
 	private String name;
+	@SerializedName("--age")
 	private int age;
+	@SerializedName("--option")
+	private boolean option;
 	private String position;
 	private BigDecimal salary;
 	private List<String> skills;
@@ -22,6 +28,12 @@ public class Staff {
 	}
 	public void setAge(int age) {
 		this.age = age;
+	}
+	public boolean isOption() {
+		return option;
+	}
+	public void setOption(boolean option) {
+		this.option = option;
 	}
 	public String getPosition() {
 		return position;
