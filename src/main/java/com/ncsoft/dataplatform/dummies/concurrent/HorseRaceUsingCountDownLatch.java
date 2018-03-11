@@ -1,4 +1,4 @@
-package com.ncsoft.dataplatform.dummies.thread;
+package com.ncsoft.dataplatform.dummies.concurrent;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,22 +7,29 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * {@link http://steinfrei.blogspot.kr/2015/03/javautilconcurrent-5-part-2.html}
+ * {@link http://www.baeldung.com/mdc-in-log4j-2-logback}
  * 
  * @author psyoblade
  *
  */
-public class RaceApp {
+public class HorseRaceUsingCountDownLatch {
+
+	private static final Logger logger = LoggerFactory.getLogger(HorseRaceUsingCountDownLatch.class);
+
 	public static void main(String[] args) throws InterruptedException, java.io.IOException {
-		System.out.println("Prepping...");
 
-		Race r = new Race("Beverly Takes a Bath", "RockerHorse", "Phineas", "Ferb", "Tin Cup",
-				"I'm Faster Than a Monkey", "Glue Factory Reject");
+		logger.info("Prepping {}", args.length);
 
-		System.out.println("It's a race of " + r.getDistance() + " lengths");
+		Race r = new Race("달취익쏴아", "초록방울", "레오나르도", "베르메르", "미켈란젤로");
 
-		System.out.println("Press Enter to run the race....");
+		logger.info("It's a race of {} lengths", r.getDistance());
+
+		logger.info("Press Enter to run the race.... {}", "Enter");
 		System.in.read();
 
 		r.run();
@@ -30,20 +37,18 @@ public class RaceApp {
 }
 
 class Race {
+	private static final Logger logger = LoggerFactory.getLogger(Race.class);
 	private Random rand = new Random();
 
 	private int distance = rand.nextInt(250);
-	// private CountDownLatch start;
-	// private CountDownLatch finish;
-
-	private List<String> horses = new ArrayList<String>();
+	private List<String> horses = new ArrayList<>();
 
 	public Race(String... names) {
 		this.horses.addAll(Arrays.asList(names));
 	}
 
 	public void run() throws InterruptedException {
-		System.out.println("And the horses are stepping up to the gate...");
+		logger.info("And the horses are stepping up to the gate... {}", "");
 		final CountDownLatch start = new CountDownLatch(1);
 		final CountDownLatch finish = new CountDownLatch(horses.size());
 		final List<String> places = Collections.synchronizedList(new ArrayList<String>());
@@ -52,37 +57,36 @@ class Race {
 			new Thread(new Runnable() {
 				public void run() {
 					try {
-						System.out.println(h + " stepping up to the gate...");
+						logger.info("{} stepping up to the gate...", h);
 						start.await();
 
 						int traveled = 0;
 						while (traveled < distance) {
 							// In a 0-2 second period of time....
-							Thread.sleep(rand.nextInt(3) * 1000);
+							Thread.sleep(rand.nextInt(3) * 1000L);
 
 							// ... a horse travels 0-14 lengths
 							traveled += rand.nextInt(15);
-							System.out.println(h + " advanced to " + traveled + "!");
+							logger.info("{} advanced to {} !", h, traveled);
 						}
 						finish.countDown();
-						System.out.println(h + " crossed the finish!");
+						logger.info("{} crossed the finish!", h);
 						places.add(h);
+
 					} catch (InterruptedException intEx) {
-						System.out.println("ABORTING RACE!!!");
-						intEx.printStackTrace();
+						logger.warn("ABORTING RACE {}", "!!!");
+						Thread.currentThread().interrupt();
 					}
 				}
 			}).start();
 		}
 
-		System.out.println("And... they're off!");
+		logger.info("And... they're off {}", "");
 		start.countDown();
 
 		finish.await();
-		System.out.println("And we have our winners!");
-		System.out.println(places.get(0) + " took the gold...");
-		System.out.println(places.get(1) + " got the silver...");
-		System.out.println("and " + places.get(2) + " took home the bronze.");
+		logger.info("And we have our winners! %n {} took the gold ... ", places.get(0));
+		logger.info("And {} got the silver, %n {} took home the bronze.", places.get(1), places.get(2));
 	}
 
 	public int getDistance() {
