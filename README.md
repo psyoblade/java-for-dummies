@@ -1,7 +1,7 @@
 # java-for-dummies.
 
-## com.ncsoft.dataplatform.dummies.anonymous.AnonymousInnerClass.java : 익명 이너 클래스 예제.
+## [익명 이너 클래스 예제](https://github.com/psyoblade/java-for-dummies/blob/develop/src/main/java/com/ncsoft/dataplatform/dummies/anonymous/AnonymousInnerClass.java)
 
-## com.ncsoft.dataplatform.dummies.logging.MoneyTransferUsingMDC.java : SLF4J를 이용한 MDC 로깅 예제.
+## [SLF4J를 이용한 MDC 로깅 예제](https://github.com/psyoblade/java-for-dummies/blob/develop/src/main/java/com/ncsoft/dataplatform/dummies/logging/MoneyTransferUsingMDC.java)
 
-## com.ncsoft.dataplatform.dummies.concurrent.HorseRaceUsingCountDownLatch.java : CountDownLatch 를 이용한 경마경주.
+## [CountDownLatch 를 이용한 경마경주](https://github.com/psyoblade/java-for-dummies/blob/develop/src/main/java/com/ncsoft/dataplatform/dummies/concurrent/HorseRaceUsingCountDownLatch.java)
