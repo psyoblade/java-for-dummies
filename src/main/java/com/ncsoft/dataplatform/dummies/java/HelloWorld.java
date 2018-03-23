@@ -1,4 +1,4 @@
-package com.ncsoft.dataplatform.dummies;
+package com.ncsoft.dataplatform.dummies.java;
 
 public class HelloWorld {
 

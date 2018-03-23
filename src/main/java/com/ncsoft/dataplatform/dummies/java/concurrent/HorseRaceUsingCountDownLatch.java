@@ -1,4 +1,4 @@
-package com.ncsoft.dataplatform.dummies.concurrent;
+package com.ncsoft.dataplatform.dummies.java.concurrent;
 
 import java.util.ArrayList;
 import java.util.Arrays;
