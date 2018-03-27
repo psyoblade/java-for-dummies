@@ -1,4 +1,4 @@
-package com.ncsoft.dataplatform.dummies.anonymous;
+package com.ncsoft.dataplatform.dummies.java.anonymous;
 
 import java.util.Random;
 

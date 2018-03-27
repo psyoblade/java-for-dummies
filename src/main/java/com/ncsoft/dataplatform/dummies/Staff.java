@@ -1,4 +1,4 @@
-package com.ncsoft.dataplatform.dummy;
+package com.ncsoft.dataplatform.dummies;
 
 import java.math.BigDecimal;
 import java.util.List;
