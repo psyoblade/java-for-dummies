@@ -15,12 +15,12 @@ public class HelloWorld {
     }
 
     public void goodBye() {
-		logger.warn("jvm is about to end");
+        logger.warn("jvm is about to end");
     }
 
-	public static void main(String[] args) {
-		HelloWorld hello = new HelloWorld();
-		hello.say();
-		hello.goodBye();
-	}
+    public static void main(String[] args) {
+        HelloWorld hello = new HelloWorld();
+        hello.say();
+        hello.goodBye();
+    }
 }
