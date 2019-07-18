@@ -1,12 +1,12 @@
 package com.ncsoft.dataplatform.dummies.java.logging.log4j;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
 import com.ncsoft.dataplatform.dummies.java.logging.interfaces.TransferService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Log4jTransferService extends TransferService {
-    private static final Logger logger = LogManager.getLogger(Log4jTransferService.class);
+    private static final Logger logger = LoggerFactory.getLogger(Log4jTransferService.class);
 
     @Override
     protected void beforeTransfer(long amount) {

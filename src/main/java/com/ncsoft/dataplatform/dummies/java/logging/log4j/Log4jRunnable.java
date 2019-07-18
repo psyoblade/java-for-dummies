@@ -1,6 +1,6 @@
 package com.ncsoft.dataplatform.dummies.java.logging.log4j;
 
-import org.apache.log4j.MDC;
+import org.slf4j.MDC;
 
 import com.ncsoft.dataplatform.dummies.java.logging.entities.Transfer;
 
