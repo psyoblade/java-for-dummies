@@ -11,8 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * {@link http://steinfrei.blogspot.kr/2015/03/javautilconcurrent-5-part-2.html}
- * {@link http://www.baeldung.com/mdc-in-log4j-2-logback}
+ * @see <a href="http://steinfrei.blogspot.kr/2015/03/javautilconcurrent-5-part-2.html">Java util concurrent</a>
+ * @see <a href="http://www.baeldung.com/mdc-in-log4j-2-logback">MDC in log4j2</a>
  * 
  * @author psyoblade
  *

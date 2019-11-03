@@ -1,17 +1,17 @@
 package com.ncsoft.dataplatform.dummies.java.logging.entities;
 
 public class Transfer {
-    private Integer transactionId;
+    private String transactionId;
     private String sender;
     private Long amount;
 
-    public Transfer(Integer transactionId, String sender, long amount) {
-        this.transactionId = transactionId;
+    public Transfer(int transactionId, String sender, long amount) {
+        this.transactionId = new Integer(transactionId).toString();
         this.sender = sender;
         this.amount = amount;
     }
 
-    public Integer getTransactionId() {
+    public String getTransactionId() {
         return transactionId;
     }
 

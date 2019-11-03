@@ -1,9 +1,12 @@
 package com.ncsoft.dataplatform.dummies.java.logging.slf4j;
 
-import org.apache.log4j.MDC;
-
 import com.ncsoft.dataplatform.dummies.java.logging.entities.Transfer;
 
+import org.slf4j.MDC;
+
+/**
+ * https://www.baeldung.com/mdc-in-log4j-2-logback
+ */
 public class Slf4jRunnable implements Runnable {
     private Transfer tx;
     Slf4jTransferService slf4jBusinessService = new Slf4jTransferService();
