@@ -18,7 +18,7 @@
 #### 4. 일관적이다 (Consistent) null 이 아닌 모든 참조 값 x 와 y 에 대해 사용자 정보가 변하지 않았다면 여러번 호출해도 항상 같은 값을 반환한다 
 #### 5. null 이 아닌 모든 참조 값 x 에 대해, x.equals(null) == false
 
-### [항목 09. equals 메소드를 오버라이드 할 때는 hashCode 메소드도 항상 같이 오버라이드 하자]()
+### [항목 09. equals 메소드를 오버라이드 할 때는 hashCode 메소드도 항상 같이 오버라이드 하자](https://github.com/psyoblade/java-for-dummies/blob/master/src/test/java/me/suhyuk/ej2nd/o09/PhoneNumberTest.java)
 > equals 메소드를 오버라이드 클래스에서 hashCode 메소드를 오버라이드 하지 않는다면 Hashtable 을 포함하는 모든 컬렉션(HashMap, HashSet 등)에서 원하는 동작을 하지 않게 되며 아래의 3가지 계약 사항을 지켜야만 합니다
 > *hashCode* 의 역할은 Hashtable 맵핑 시에 bucket 을 결정짓는 숫자로 활용되기 때문에 충분히 sparse 하고, 다른 객체에 대해서는 다르게 나오는 hashCode 가 좋다
 
@@ -26,20 +26,21 @@
 #### 2. 동일한 두 객체 o1.equals(o2) 의 경우 동일한 정수값이 나와야 한다
 #### 3. 동일하지 않은 두 객체에 대해서 항상 동일한 정수값이 나올 필요는 없으나, 항상 다르게 나오는 경우 해시 컬렉션들의 성능 향상에 도움이 된다
 
-> 좋은 해시코드 생성을 위한 가이드라인 각 필드 f 가
-
-#### 1. int result = 17 과 같이 0이 아닌 상수값을 저장한다
-#### 2. equals 비교 대상이 되는 필드 f 데이터 타입에 따라 아래와 같은 변환을 통해 해시값을 구한다
-#### 2-a 각 필드에 대한 int 해시 코드 값 c 는 다음과 같이 산출한다
-#### 2-a-1. boolean 타입은 (f ? 1 : 0)
-#### 2-a-2. byte, char, short, int 타입은 (int) f
-#### 2-a-3. long 타입은 (int) (f ^ (f >>> 32))
-#### 2-a-4. float 타입은 Float.floatToIntBits(f)
-#### 2-a-5. double 타입은 Double.doubleToLongBits(f) 결과를 2-3. 규칙을 적용
-#### 2-a-6. 필드 f 가 객체 참조인 경우는 재귀적으로 equals 호출 시에 해당 객체의 hashCode 메소드가 자동 호출된다 (필드 값이 null 이면 0을 반환)
-#### 2-a-7. 필드 f 가 배열이라면 모든 요소를 필드로 간주하고 모든 값의 해시 코드 값을 2번 항목을 통해 산출하거나, Arrays.hashCode 메소드를 사용한다
-#### 2-b 앞의 단계에서 구한 해시코드 c를 result 에 더한다 (result = 31 * result + c; // 이 단계가 모든 필드에 대해 반복적으로 수행된다)
-#### 3. result 값을 반환한다 
+```text
+좋은 해시코드 생성을 위한 가이드라인 각 필드 f 가
+1. int result = 17 과 같이 0이 아닌 상수값을 저장한다
+2. equals 비교 대상이 되는 필드 f 데이터 타입에 따라 아래와 같은 변환을 통해 해시값을 구한다
+2-a 각 필드에 대한 int 해시 코드 값 c 는 다음과 같이 산출한다
+2-a-1. boolean 타입은 (f ? 1 : 0)
+2-a-2. byte, char, short, int 타입은 (int) f
+2-a-3. long 타입은 (int) (f ^ (f >>> 32))
+2-a-4. float 타입은 Float.floatToIntBits(f)
+2-a-5. double 타입은 Double.doubleToLongBits(f) 결과를 2-3. 규칙을 적용
+2-a-6. 필드 f 가 객체 참조인 경우는 재귀적으로 equals 호출 시에 해당 객체의 hashCode 메소드가 자동 호출된다 (필드 값이 null 이면 0을 반환)
+2-a-7. 필드 f 가 배열이라면 모든 요소를 필드로 간주하고 모든 값의 해시 코드 값을 2번 항목을 통해 산출하거나, Arrays.hashCode 메소드를 사용한다
+2-b 앞의 단계에서 구한 해시코드 c를 result 에 더한다 (result = 31 * result + c; // 이 단계가 모든 필드에 대해 반복적으로 수행된다)
+3. result 값을 반환한다 
+```
 
 ### [항목 10. toString 메소드는 항상 오버라이드 하자]()
 
