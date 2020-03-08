@@ -57,11 +57,13 @@
 #### 4. Lombok 을 통한 toString 메소드 구현 : 컴파일 과정에서 코드가 삽입되는 방식이며 IDE 연동이 불안정 하고 lombok 추가해야 함
 
 
-### [항목 11. clone 메소드는 신중하게 오버라이드 하자]()
+### [항목 11. clone 메소드는 신중하게 오버라이드 하자](https://github.com/psyoblade/java-for-dummies/blob/master/src/test/java/me/suhyuk/ej2nd/o11/StackTest.java)
 > 자바에서 Cloneable 인터페이스를 통한 clone 구현은 해당 메소드를 가지고 있지 않으며 단순히 복제를 허용한 객체라는 것을 알리는 목적이다
 > 즉, Cloneable 이 아닌 객체는 clone 호출 시에 CloneNotSupportedException 예외를 던지기 때문입니다
+>
 > Object.clone() 메소드를 호출하기 때문에 Reflection 의 도움 없이는 사용할 수 없으며, 이 또한 제약이 있을 수 밖에 없습니다
 > 이는 생성자를 호출하지 않고 객체가 생성되어 복사되기 때문이고 primitive 유형이 아닌 reference 경우 그대로 복사 되기 때문에 유의해야 합니다
+>
 > 결국 모든 레퍼런스 객체에 대해 재귀적으로 복사하는 deepCopy 구현을 직접해 주어야만 정상적인 clone 이 가능합니다
 
 ### [항목 13. 클래스와 그 멤버의 접근성을 최소화하자](https://github.com/psyoblade/java-for-dummies/blob/master/src/main/java/me/suhyuk/ej2nd/o13/SafeSites.java)
