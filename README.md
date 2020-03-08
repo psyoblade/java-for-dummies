@@ -43,19 +43,19 @@
 3. result 값을 반환한다 
 ```
 
-### [항목 10. toString 메소드는 항상 오버라이드 하자]()
+### [항목 10. toString 메소드는 항상 오버라이드 하자](https://github.com/psyoblade/java-for-dummies/blob/master/src/test/java/me/suhyuk/ej2nd/o10/PhoneNumberTest.java)
 > "간결해야 하지만 사람이 읽기 쉬운 형태의 정보 표현"으로 작성하되, 모든 서브 클래스는 오버라이드 하기를 권합니다
 
 #### 1. 모든 서브 클래스들은 toString 메소드를 오버라이드 하라
 #### 2. 반환값의 의도를 주석을 통해 명쾌하게 문서화 하라
 #### 3. 반환 형식을 규정하고 싶다면 별도의 팩토리 메소드나 생성자를 통해 작성하라
 
-```java
-// toString 오버라이드 이후 Reference Id 가져오는 법
-private String getHashCode(Object o) {
-    return Integer.toHexString(System.identityHashCode(o));
-}
-```
+> 외에도 다양한 방법으로 toString 메소드를 오버라이드 할 수 있으니 참고하여 필요할 때에 적용하면 좋습니다
+#### 1. 직접 필요한 필드만 구현 (String.format, Factory, Constructor 등)
+#### 2. Apache toStringBuilder 통한 방법 : 다양한 포맷을 결정할 수 있으며 그나마 간편하게 추가할 수 있지만 직접 구현한 것과 크게 다르지 않음
+#### 3. ObjectMapper 통한 방법 : SneakyThrow 어노테이션을 붙이거나 예외처리를 해야하고 jackson 라이브러리를 추가해야 함
+#### 4. Lombok 을 통한 toString 메소드 구현 : 컴파일 과정에서 코드가 삽입되는 방식이며 IDE 연동이 불안정 하고 lombok 추가해야 함
+
 
 ### [항목 11. clone 메소드는 신중하게 오버라이드 하자]()
 

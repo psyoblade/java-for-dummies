@@ -1,5 +1,7 @@
 package me.suhyuk.ej2nd.o09;
 
+import java.io.Serializable;
+
 public class PhoneNumber {
 
     private final short areaCode; // 지역번호 (051)
