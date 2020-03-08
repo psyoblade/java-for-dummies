@@ -42,4 +42,15 @@ public class PhoneNumber {
         else return volatileHashCode();
     }
 
+    protected short getAreaCode() {
+        return areaCode;
+    }
+
+    protected short getPrefix() {
+        return prefix;
+    }
+
+    protected short getLineNumber() {
+        return lineNumber;
+    }
 }

@@ -20,6 +20,7 @@
 
 ### [항목 09. equals 메소드를 오버라이드 할 때는 hashCode 메소드도 항상 같이 오버라이드 하자](https://github.com/psyoblade/java-for-dummies/blob/master/src/test/java/me/suhyuk/ej2nd/o09/PhoneNumberTest.java)
 > equals 메소드를 오버라이드 클래스에서 hashCode 메소드를 오버라이드 하지 않는다면 Hashtable 을 포함하는 모든 컬렉션(HashMap, HashSet 등)에서 원하는 동작을 하지 않게 되며 아래의 3가지 계약 사항을 지켜야만 합니다
+>
 > *hashCode* 의 역할은 Hashtable 맵핑 시에 bucket 을 결정짓는 숫자로 활용되기 때문에 충분히 sparse 하고, 다른 객체에 대해서는 다르게 나오는 hashCode 가 좋다
 
 #### 1. 같은 객체에 대해 여러번 호출하더라도 일관성 있게 같은 값이 나와야 한다
@@ -43,6 +44,18 @@
 ```
 
 ### [항목 10. toString 메소드는 항상 오버라이드 하자]()
+> "간결해야 하지만 사람이 읽기 쉬운 형태의 정보 표현"으로 작성하되, 모든 서브 클래스는 오버라이드 하기를 권합니다
+
+#### 1. 모든 서브 클래스들은 toString 메소드를 오버라이드 하라
+#### 2. 반환값의 의도를 주석을 통해 명쾌하게 문서화 하라
+#### 3. 반환 형식을 규정하고 싶다면 별도의 팩토리 메소드나 생성자를 통해 작성하라
+
+```java
+// toString 오버라이드 이후 Reference Id 가져오는 법
+private String getHashCode(Object o) {
+    return Integer.toHexString(System.identityHashCode(o));
+}
+```
 
 ### [항목 11. clone 메소드는 신중하게 오버라이드 하자]()
 
