@@ -55,4 +55,8 @@ public class PhoneNumber {
     protected short getLineNumber() {
         return lineNumber;
     }
+
+    public boolean matchAreaCodeWith(int number) {
+        return areaCode == number;
+    }
 }

@@ -66,6 +66,24 @@
 >
 > 결국 모든 레퍼런스 객체에 대해 재귀적으로 복사하는 deepCopy 구현을 직접해 주어야만 정상적인 clone 이 가능합니다
 
+
+### [항목 12. Comparable 인터페이스의 구현을 고려하자]()
+> 두 객체의 동등성 여부를 비교하는 equals 와 다르게 순서까지 비교할 수 있는 인터페이스 구현이 가능하며 유일하게 compareTo 메소드만 Comparable 인터페이스에 존재합니다
+> 즉, Comparable 인터페이스를 구현한다는 의미는 인스턴스 들이 자연율(Natural Order)를 따른다는 것을 의미하며 Arrays.sort(a) 로 정렬이 가능합니다
+>
+> 표현식(expression)의 부호를 반환하는 함수를 signum 함수 줄여 sgn 이라고 표현하는데 음수는 -1, 0이면 0, 양수면 1 을 반환합니다
+
+#### 1. 모든 x 와 y 에 대해 sgn(x.compareTo(y)) == - sgn(y.compareTo(x)) 
+  * 반대로 y.compareTo(x) 가 예외를 반환할 때에만 x.compareTo(y) 가 예외를 던진다는 의미를 내포한다
+#### 2. 이행적인 관계가 성립해야 한다 x.compareTo(y) > 0 && y.compareTo(z) 이면 x.compareTo(z) > 0 이어야 한다
+#### 3. x.compareTo(y) == 0 이면 모든 z 에 대해서 sgn(x.compareTo(z)) == sgn(y.compareTo(z)) 이 되어야 한다
+#### 4. 반드시 성립되어야 하지는 않으나 (x.compareTo(y) == 0) == (x.equals(y)) 가 되면 좋다
+
+> 위와 같은 compareTo 조항을 따르는 클래스는 TreeSet, TreeMap, Collections 및 Arrays 등도 포함됩니다
+> equals 의 상속에 대한 제약과 마찬가지로 "인스턴스 생성이 가능한 클래스로부터 상속 받은 서브 클레스를 compareTo 계약을 지킬 방법은 없다" 입니다.
+>
+> 결국, 데이터 클래스의 경우 상속을 통한 서브클래싱을 한다는 것은 비교 연산을 포기한다는 것을 의미합니다
+
 ### [항목 13. 클래스와 그 멤버의 접근성을 최소화하자](https://github.com/psyoblade/java-for-dummies/blob/master/src/main/java/me/suhyuk/ej2nd/o13/SafeSites.java)
 > 잘 설계된 모듈은 자신 내부 데이터 및 상세한 구현의 노출을 최소화 합니다. (Encapsulation, Information-Hiding)
   * 클래스 및 인터페이스의 접근자는 가능한 패키지 전용 즉, 접근자를 명시하지 않고 사용하라
