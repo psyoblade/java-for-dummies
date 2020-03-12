@@ -95,10 +95,10 @@
   * public final 필드라고 하더라도 해당 필드를 수정하는 구조변경이 어렵다는 면에서 추천되지 않는다
   * 요소가 하나라고 있는 배열은 항상 가변이므로 static final 필드 배열은 public 접근자를 주어서는 안 된다
   
-### [항목 14. public 클래스에서는 public 필드가 아닌 접근자(accessor) 메소드를 사용한다]
+### [항목 14. public 클래스에서는 public 필드가 아닌 접근자(accessor) 메소드를 사용한다](https://github.com/psyoblade/java-for-dummies/blob/master/src/test/java/me/suhyuk/ej2nd/o14/ImmutablePublicFieldTimeTest.java)
 > public 멤버 변수는 클래스의 *캡슐화(encapsulation)* 의 장점을 제공하지 못한다. 즉 API 수정이 없는 한 필드 수정이 불가능하다
 
-### [항목 15. 가변성을 최소화 하자]
+### [항목 15. 가변성을 최소화 하자](https://github.com/psyoblade/java-for-dummies/blob/master/src/test/java/me/suhyuk/ej2nd/o15/ComplexTest.java)^
 > 불변(immutable) 클래스는 자신의 *인스턴스가 갖는 값을 변경할 수 없는* 클래스이다.
 > 자바에는 많은 불변 클래스가 있는데 대표적으로 String, BigInteger, BigDecimal 등이 있으며 일반적으로 에러 및 보안 측면에서 안전하다
 
